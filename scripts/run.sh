@@ -31,6 +31,10 @@ if [ "$VERBOSE" == "yes" ]; then
   cmd="$cmd --verbose"
 fi
 
+if [ "$CONFIGSERVER" == "yes" ]; then
+  cmd="$cmd --configsvr"
+fi
+
 $cmd &
 
 if [ "$MONGO_ROLE" == "primary" ]  && [ $already_set == false ]; then
