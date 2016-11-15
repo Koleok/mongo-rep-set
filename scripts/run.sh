@@ -27,11 +27,17 @@ fi
 
 cmd="mongod --storageEngine wiredTiger $keyfile --replSet $REP_SET $auth"
 
-if [ "$VERBOSE" == "yes" ]; then
+if [ "$PORT" == "" ]; then
+  cmd="$cmd --port 27017"
+else
+  cmd="$cmd --port $PORT"
+fi
+
+if [ "$VERBOSE" == "true" ]; then
   cmd="$cmd --verbose"
 fi
 
-if [ "$CONFIGSERVER" == "yes" ]; then
+if [ "$CONFIGSERVER" == "true" ]; then
   cmd="$cmd --configsvr"
 fi
 

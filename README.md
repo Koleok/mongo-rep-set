@@ -20,9 +20,12 @@ Env var | Value | Description | Comment | Only if Authentication enabled | Only 
 MONGO_ROLE | [primary] / [secondary]| | Only 1 primary in your cluster | No | No
 REP_SET | String | Name of the repset | Must be the same on each node | No | No
 NO_AUTH | [true] / [false]  | If authentication enabled | Must be the same on each node | No | No
-| | |
+VERBOSE | [true] / [false]  | Verbose enabled | | No | No
+PORT | Port listening  | | 27017 by default | No | No
+CONFIGSERVER | [true] / [false]  | Run the mongo instance as a config server | | No | No
+| | | | |
 KEY_REP_SET | String | Key for the authenticate nodes each other | Must be the same on each node | Yes | No
-| | |
+| | | | |
 MONGO_CONF_REPSET | See example in docker-compose.yml | Configuration of the repset | | Yes | Yes
 MONGO_ROOT_USER | String | User for root role | |Yes | Yes
 MONGO_ROOT_PASSWORD | String | Password for user with root role | | Yes | Yes

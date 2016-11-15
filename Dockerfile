@@ -1,6 +1,7 @@
 FROM mongo:3.2
 
 ARG KEY_REP_SET
+ARG PORT=27017
 
 RUN mkdir /opt/mongo
 ADD scripts/mongo_setup_users.sh /opt/mongo/mongo_setup_users.sh
@@ -13,5 +14,7 @@ RUN chown -R mongodb:mongodb /opt/mongo
 RUN chmod -R 777 /opt/mongo
 
 USER mongodb
+
+EXPOSE $PORT
 
 CMD ["/opt/mongo/run.sh"]
