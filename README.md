@@ -7,6 +7,7 @@ Mongo version:  **latest**
 ### Build
 
 ```sh
+docker network create mongo-net
 docker build -t bappr/mongo-rep-set:latest .
 ```
 
