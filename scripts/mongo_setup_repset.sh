@@ -4,12 +4,16 @@ echo "************************************************************"
 echo "Setting up replica set"
 echo "************************************************************"
 
-mongo admin --eval "help" > /dev/null 2>&1
+if [ "$PORT" == "" ]; then
+  PORT=27017
+fi
+
+mongo admin --port $PORT --eval "help" > /dev/null 2>&1
 RET=$?
 
 while [[ RET -ne 0 ]]; do
   echo "Waiting for MongoDB to start..."
-  mongo admin --eval "help" > /dev/null 2>&1
+  mongo admin --port $PORT --eval "help" > /dev/null 2>&1
   RET=$?
   sleep 1
 
@@ -25,4 +29,4 @@ if [ "$NO_AUTH" == "true" ]; then
   credentials=""
 fi
 
-mongo admin $credentials --eval "rs.initiate($MONGO_CONF_REPSET);"
+mongo admin --port $PORT $credentials --eval "rs.initiate($MONGO_CONF_REPSET);"
