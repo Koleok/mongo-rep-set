@@ -6,6 +6,10 @@ fi
 
 mongodb_setup_cmd="mongod --port $PORT --storageEngine wiredTiger"
 
+if [ "$CONFIGSERVER" == "true" ]; then
+  mongodb_setup_cmd="$mongodb_setup_cmd --configsvr"
+fi
+
 $mongodb_setup_cmd &
 
 fg
