@@ -30,3 +30,13 @@ if [ "$NO_AUTH" == "true" ]; then
 fi
 
 mongo admin --port $PORT $credentials --eval "rs.initiate($MONGO_CONF_REPSET);"
+RSSTATUS=$(mongo admin --port $PORT $credentials --eval "rs.status().ok")
+RET=$(echo "$RSSTATUS" | sed -n 3p)
+
+while [[ RET -ne 1 ]]; do
+  echo "Waiting for MongoDB cluster to be initated..."
+  sleep 1
+  mongo admin --port $PORT $credentials --eval "rs.initiate($MONGO_CONF_REPSET);"
+  RSSTATUS=$(mongo admin --port $PORT $credentials --eval "rs.status().ok")
+  RET=$(echo "$RSSTATUS" | sed -n 3p)
+done
