@@ -94,9 +94,7 @@ items:
         spec:
           volumes:
             -
-              name: ${APPLICATION_NAME_1}-volume-1
-            -
-              name: ${APPLICATION_NAME_1}-volume-2
+              name: ${APPLICATION_NAME_1}-volume
           containers:
           - name: ${APPLICATION_NAME_1}
             image: ${APPLICATION_NAME_1}:latest
@@ -114,9 +112,9 @@ items:
               - name: VERBOSE
                 value: ${MONGOD_VERBOSE}
             volumeMounts:
-              - name: ${APPLICATION_NAME_1}-volume-1
+              - name: ${APPLICATION_NAME_1}-volume
                 mountPath: /data/configdb
-              - name: ${APPLICATION_NAME_1}-volume-2
+              - name: ${APPLICATION_NAME_1}-volume
                 mountPath: /data/db
 
       triggers:
@@ -205,9 +203,7 @@ items:
         spec:
           volumes:
             -
-              name: ${APPLICATION_NAME_2}-volume-1
-            -
-              name: ${APPLICATION_NAME_2}-volume-2
+              name: ${APPLICATION_NAME_2}-volume
           containers:
           - name: ${APPLICATION_NAME_2}
             image: ${APPLICATION_NAME_2}:latest
@@ -219,9 +215,9 @@ items:
               - name: VERBOSE
                 value: ${MONGOD_VERBOSE}
             volumeMounts:
-              - name: ${APPLICATION_NAME_2}-volume-1
+              - name: ${APPLICATION_NAME_2}-volume
                 mountPath: /data/configdb
-              - name: ${APPLICATION_NAME_2}-volume-2
+              - name: ${APPLICATION_NAME_2}-volume
                 mountPath: /data/db
 
       triggers:
@@ -310,9 +306,7 @@ items:
         spec:
           volumes:
             -
-              name: ${APPLICATION_NAME_3}-volume-1
-            -
-              name: ${APPLICATION_NAME_3}-volume-2
+              name: ${APPLICATION_NAME_3}-volume
           containers:
           - name: ${APPLICATION_NAME_3}
             image: ${APPLICATION_NAME_3}:latest
@@ -324,9 +318,9 @@ items:
               - name: VERBOSE
                 value: ${MONGOD_VERBOSE}
             volumeMounts:
-              - name: ${APPLICATION_NAME_3}-volume-1
+              - name: ${APPLICATION_NAME_3}-volume
                 mountPath: /data/configdb
-              - name: ${APPLICATION_NAME_3}-volume-2
+              - name: ${APPLICATION_NAME_3}-volume
                 mountPath: /data/db
 
       triggers:

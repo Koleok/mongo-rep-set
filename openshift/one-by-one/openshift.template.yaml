@@ -91,9 +91,7 @@ items:
         spec:
           volumes:
             -
-              name: ${APPLICATION_NAME}-volume-1
-            -
-              name: ${APPLICATION_NAME}-volume-2
+              name: ${APPLICATION_NAME}-volume
           containers:
           - name: ${APPLICATION_NAME}
             image: ${APPLICATION_NAME}:latest
@@ -111,9 +109,9 @@ items:
               - name: VERBOSE
                 value: ${MONGOD_VERBOSE}
             volumeMounts:
-              - name: ${APPLICATION_NAME}-volume-1
+              - name: ${APPLICATION_NAME}-volume
                 mountPath: /data/configdb
-              - name: ${APPLICATION_NAME}-volume-2
+              - name: ${APPLICATION_NAME}-volume
                 mountPath: /data/db
 
       triggers:
