@@ -16,11 +16,6 @@ while [[ RET -ne 0 ]]; do
   mongo admin --port $PORT --eval "help" > /dev/null 2>&1
   RET=$?
   sleep 1
-
-  if [[ -f /data/db/mongod.lock ]]; then
-    echo "Removing Mongo lock file"
-    rm /data/db/mongod.lock
-  fi
 done
 
 # configure replica set
@@ -33,8 +28,8 @@ mongo admin --port $PORT $credentials --eval "rs.initiate($MONGO_CONF_REPSET);"
 RSSTATUS=$(mongo admin --port $PORT $credentials --eval "rs.status().ok")
 RET=$(echo "$RSSTATUS" | sed -n 3p)
 
-while [[ RET -ne 1 ]]; do
-  echo "Waiting for MongoDB cluster to be initated..."
+while [ "$RET" != "1" ]; do
+  echo "Waiting for MongoDB cluster to be initiated..."
   sleep 1
   mongo admin --port $PORT $credentials --eval "rs.initiate($MONGO_CONF_REPSET);"
   RSSTATUS=$(mongo admin --port $PORT $credentials --eval "rs.status().ok")

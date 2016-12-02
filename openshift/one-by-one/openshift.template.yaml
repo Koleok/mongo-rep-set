@@ -24,8 +24,10 @@ items:
     required: true
     description: primary / secondary - if primary, create root user and run rs.initiate(conf)
   - name: MONGODB_ROOT_USER
+    required: true
     description: if primary, create MONGO_ROOT_USER
   - name: MONGODB_ROOT_PASSWORD
+    required: true
     description: if primary, create MONGO_ROOT_USER with MONGO_ROOT_PASSWORD
   - name: MONGODB_CONF_REPSET
     description: if primary, run rs.initiate(MONGO_CONF_REPSET)

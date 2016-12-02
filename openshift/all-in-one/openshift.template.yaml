@@ -200,6 +200,10 @@ items:
                 value: secondary
               - name: VERBOSE
                 value: ${MONGOD_VERBOSE}
+              - name: MONGO_ROOT_USER
+                value: ${MONGODB_ROOT_USER}
+              - name: MONGO_ROOT_PASSWORD
+                value: ${MONGODB_ROOT_PASSWORD}
             volumeMounts:
               - name: ${APPLICATION_NAME_2}-volume
                 mountPath: /data/configdb
@@ -296,6 +300,10 @@ items:
                 value: secondary
               - name: VERBOSE
                 value: ${MONGOD_VERBOSE}
+              - name: MONGO_ROOT_USER
+                value: ${MONGODB_ROOT_USER}
+              - name: MONGO_ROOT_PASSWORD
+                value: ${MONGODB_ROOT_PASSWORD}
             volumeMounts:
               - name: ${APPLICATION_NAME_3}-volume
                 mountPath: /data/configdb

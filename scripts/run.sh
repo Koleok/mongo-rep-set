@@ -4,6 +4,8 @@ set -m
 cp /opt/mongo/mongodb-keyfile /opt/mongo/mongodb-keyfile-os
 chmod 600 /opt/mongo/mongodb-keyfile-os
 
+/opt/mongo/mongo_check_mongod_running.sh
+
 already_set=false
 if [ "$(ls -A /data/db)" ]; then
   echo "************************************************************"
@@ -46,5 +48,7 @@ $cmd &
 if [ "$MONGO_ROLE" == "primary" ]  && [ $already_set == false ]; then
   /opt/mongo/mongo_setup_repset.sh
 fi
+
+/opt/mongo/mongo_check_state.sh
 
 fg
