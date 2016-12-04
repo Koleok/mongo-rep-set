@@ -8,7 +8,7 @@ mongo1:
   - MONGO_CONF_REPSET={_id:'rs0',members:[{_id:1,host:'mongo1'},{_id:2,host:'mongo2'},{_id:3,host:'mongo3'}]}
   - MONGO_ROOT_USER=root
   - MONGO_ROOT_PASSWORD=root123
-#  - NO_AUTH=true
+  - NO_AUTH=true
   net: mongo-net
   container_name: mongo1
 
@@ -19,7 +19,7 @@ mongo2:
   environment:
   - REP_SET=rs0
   - VERBOSE=no
-#  - NO_AUTH=true
+  - NO_AUTH=true
   net: mongo-net
   container_name: mongo2
 
@@ -29,6 +29,6 @@ mongo3:
   - "27019:27017"
   environment:
   - REP_SET=rs0
-#  - NO_AUTH=true
+  - NO_AUTH=true
   net: mongo-net
   container_name: mongo3
