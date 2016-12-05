@@ -28,22 +28,23 @@ echo "************************************************************"
 echo "Setting up users..."
 echo "************************************************************"
 
-# set as master
-mongo admin --port $PORT --eval "db.isMaster()"
 
 # create root user
 mongo admin --port $PORT --eval "db.createUser({
   user: '$MONGO_ROOT_USER',
   pwd: '$MONGO_ROOT_PASSWORD',
   roles:[{ role: 'root', db: 'admin' }]
-});"
-
-# create oplogger user
-mongo admin --port $PORT --eval "db.createUser({
-  user:'oplogger',
-  pwd:'password',
-  roles:[{role: 'read', db: 'local'}]
 })"
+
+# # set as master
+# mongo admin --port $PORT --eval "db.isMaster()"
+#
+# # create oplogger user
+# mongo admin --port $PORT --eval "db.createUser({
+#   user:'oplogger',
+#   pwd:'password',
+#   roles:[{role: 'read', db: 'local'}]
+# })"
 
 echo "************************************************************"
 echo "Shutting down"
